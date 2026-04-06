@@ -1,7 +1,7 @@
 ## Домашнее задание к занятию 5. «Практическое применение Docker»
 
 # Задача 2
-Отчет сканирования предоставлен в текущем каталоге в файле vulnerabilities.csv
+Отчет сканирования предоставлен в текущем каталоге в файле [vulnerabilities.csv](https://github.com/pmymaxi/hw_05_repo/blob/main/doc/vulnerabilities.csv)
 
 # Задача 3
 Скриншот sql-запроса
