@@ -12,8 +12,8 @@
 
 # Задача 4
 
-[Ссылка на fork репозитории к задаче 4](https://github.com/pmymaxi/hw_05_repo)
-[Ссылка на bash скрипт auto-deploy.sh к задаче 4](https://github.com/pmymaxi/hw_05_repo/tree/main/tools)
+- [Ссылка на fork репозитории к задаче 4](https://github.com/pmymaxi/hw_05_repo)
+- [Ссылка на bash скрипт auto-deploy.sh к задаче 4](https://github.com/pmymaxi/hw_05_repo/tree/main/tools)
 
 <img width="1335" height="982" alt="изображение" src="https://github.com/user-attachments/assets/a9ab8446-31d3-4372-8f38-eb75b3ba05d4" />
 
