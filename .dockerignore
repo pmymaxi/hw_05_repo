@@ -26,3 +26,4 @@ Dockerfile*
 *yaml
 *yml
 .dockerignore
+auto-deploy.sh
