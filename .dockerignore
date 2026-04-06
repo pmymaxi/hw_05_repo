@@ -14,6 +14,8 @@ README*
 #directoty
 haproxy/
 nginx/
+tools/
+doc/
 
 #all
 schema.pdf
@@ -26,5 +28,3 @@ Dockerfile*
 *yaml
 *yml
 .dockerignore
-auto-deploy.sh
-tools/
