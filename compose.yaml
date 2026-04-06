@@ -59,8 +59,6 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    #Сервис должен всегда перезапускаться в случае ошибок
-    restart: on-failure
 
 volumes:
   db_data: {}
