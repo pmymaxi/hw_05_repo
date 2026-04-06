@@ -6,11 +6,23 @@
 
 ## Скрипт backup_db.sh выполняет следующее действия:
 - Выполняет разовый dump mysql базы данных c помощью образа/контейнера schnitzler/mysqldump. Запуск скрипта выполняется через crontab, например каждую минуту:
- 
-  
+```bash
+# Example of job definition:
+# .---------------- minute (0 - 59)
+# |  .------------- hour (0 - 23)
+# |  |  .---------- day of month (1 - 31)
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# |  |  |  |  |
+# *  *  *  *  * user-name command to be executed
+*  *    * * *   root    /opt/ip-hw05/backup_db.sh
+#
+  ```
 Параметры скрипта: 
 - . /dir/project/.env – относительный путь до файла переменных подключения к mysql
 - NET_NAME=name network – имя сети в docker (обязательно чтобы контейнер schnitzler/mysqldump и mysql располагались в одной сети)
 - DB_HOST=name_server – имя mysql хоста (имя сервиса)
 - DB_NAME=db name – имя базы данных с которой будем снимать dump
 - BACKUP_DIR=/dir/backup/ - относительный путь до каталога хранения базы на хосте. 
+
+
