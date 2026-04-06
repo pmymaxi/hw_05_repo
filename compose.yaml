@@ -1,0 +1,73 @@
+include: 
+  - proxy.yaml
+# Якоря производительности, env file
+x-deploy: &deploy-dev
+  deploy:
+    resources:
+      limits:
+        cpus: "1"
+        memory: 512M
+      reservations:
+        memory: 256M
+x-env_file: &env_file
+  env_file:
+    - .env
+x-restart: &restart
+  restart: on-failure #Сервис должен всегда перезапускаться в случае ошибок
+
+services:
+ # конфигурация сервиса db  
+  db:
+    image: mysql:8 
+    <<: [*deploy-dev, *env_file, *restart]
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_HOST="%" # Даем разрешение подключения от имени root с любого хоста
+    # Определение сети: в bridge сети с названием backend и statIP 172.20.0.10
+    volumes:
+      - db_data:/var/lib/mysql
+    networks: 
+      backend:
+        ipv4_address: 172.20.0.10
+    # Проверка mysql is alive
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      retries: 5
+
+
+    # конфигурация сервиса web
+  web:
+    # Собираем образ из dockerfile с web ресурсом и приложением
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+    <<: [*deploy-dev, *env_file, *restart]
+    environment:
+      - DB_HOST=db
+      - DB_NAME=${MYSQL_DATABASE}
+      - DB_USER=${MYSQL_USER}
+      - DB_PASSWORD=${MYSQL_PASSWORD}
+    # Определение сети: в bridge сети с названием backend и statIP 172.20.0.5
+    networks: 
+      backend:
+        ipv4_address: 172.20.0.5
+    # Проверка mysql live db 
+    depends_on:
+      db:
+        condition: service_healthy
+    #Сервис должен всегда перезапускаться в случае ошибок
+    restart: on-failure
+
+volumes:
+  db_data: {}
+
+networks:
+  backend:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 172.20.0.0/24
