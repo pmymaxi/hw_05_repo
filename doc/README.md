@@ -17,6 +17,7 @@
 
 <img width="1335" height="982" alt="изображение" src="https://github.com/user-attachments/assets/a9ab8446-31d3-4372-8f38-eb75b3ba05d4" />
 
+
 Docker context ssh
 
 <img width="1875" height="1286" alt="изображение" src="https://github.com/user-attachments/assets/470a0bd4-6077-42ac-9806-0b827d580785" />
