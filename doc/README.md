@@ -17,6 +17,11 @@
 
 <img width="1335" height="982" alt="изображение" src="https://github.com/user-attachments/assets/a9ab8446-31d3-4372-8f38-eb75b3ba05d4" />
 
+Docker context ssh
+
+<img width="1875" height="1286" alt="изображение" src="https://github.com/user-attachments/assets/470a0bd4-6077-42ac-9806-0b827d580785" />
+
+
 # Задача 5
 
 - [Ссылка на bash скрипт backup_db.sh к задаче 5](https://github.com/pmymaxi/hw_05_repo/tree/main/tools)
